@@ -42,15 +42,19 @@ Do đó kích thước của union là kích thước lớn nhất của kiểu 
 - Được sử dụng cấp phát cho biến local, input parameter của hàm,...
 - Sẽ được giải phóng khi ra khỏi block code/hàm .
 - Các biến tạo trong vùng nhớ này có thể tự động được thu hồi, nên ta không cần các kỹ thuật thu hồi bộ nhớ như khi ta cấp phát động trong heap.
+
 ***Head*** Quyền truy cập Read and write.
 - Được sr dụng để cấp phát bộ nhớ động.
 - Các biến trong bộ nhớ này phải được thu hồi thủ công bằng cách sử dụng các hàm free()  
+
 ***Bss*** Quyền truy cập read and write.
 - Chứa các biến global hoặc static khởi tạo bằng không hoặc không khởi tạo.
 - Được giải phóng khi kết thúc chương trinhf.
+
 ***Data*** Quyền truy cập read and write.
 - Chứa các biến global hoặc static được khởi tạo khác không.
 - Được giải phóng khi kết thúc chương trình.
+
 ***Text*** Quyền truy cập read only.
 - Chứa các biến khai báo hằng số.
 - Chứa mã máy của chương trình đã được biên dịch.
