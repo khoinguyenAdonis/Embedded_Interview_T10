@@ -1,5 +1,7 @@
-# C Programing language
-## struct and union 
+<details> <summary><h2>▶ C programming language</h2></summary>
+<details>
+ <summary><h3>▶struct and union </h3></summary>
+
 ### struct
 Struct định nghĩa một kiểu dữ liệu mới, với hơn một thành phần trong chương trình, biến dạng struct bao gồm nhiều thành phần có thể thuộc nhiều kiểu dữ liệu khác nhau. Typedef Struct  khai báo/ định nghĩa một kiểu struct
 vd 
@@ -28,7 +30,9 @@ Kích thước kiểu struct tối thiểu bằng kích thước các thành vi�
 ### union
 Union trong C là một kiểu dữ liệu đặc biệt có sẵn trong C cho phép lưu trữ các kiểu dữ liệu khác nhau trong cùng một vị trí bộ nhớ. Cấu trúc của Union là tất cả các thành phần của nó dùng chung một vùng nhớ có kích thước tương ứng với thành phần lớn nhất.
 Do đó kích thước của union là kích thước lớn nhất của kiểu dữ liệu trong nó. Thay đổi nội dung 1 thành viên trong union sẽ dẫn đến thay đổi nội dung của thành viên khác.
-## Phân vùng bộ nhớ ram 
+<details>
+<summary><h3>▶Phân vùng bộ nhớ ram </h3></summary>
+
 |Stack|
 |:-|
 |↓|
@@ -58,7 +62,8 @@ Do đó kích thước của union là kích thước lớn nhất của kiểu 
 ***Text*** Quyền truy cập read only.
 - Chứa các biến khai báo hằng số.
 - Chứa mã máy của chương trình đã được biên dịch.
-## Macro and Function
+<details>
+<summary><h3>Macro and Function </h3></summary>
 
 
     
