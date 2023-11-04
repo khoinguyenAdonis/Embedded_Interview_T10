@@ -75,14 +75,15 @@ void hien_thi(char string[]){
     for (int i = 0; i < size; i++)
     {
         if (array[i].status == false )
-        {
+       {
             int j =0;
+            printf("tu '");
             while (j!= array[i].lenght)
             {
                 printf("%c",array[i].ptr[j]);
                 j++;
             }
-            printf(": xuat hien %d lan\n",array[i].count);            
+            printf("' xuat hien %d lan\n",array[i].count);            
         }        
     }
 }
