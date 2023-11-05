@@ -47,23 +47,17 @@ void display(char string[]){
     for (int i =0 ; i< size; i++){
         swapString[i] = array[size - 1 -i];      
     }
-    for (int i = 0; i < size; i++)
-    {
+    for (int i = 0; i < size; i++){
         int j = 0;
-        while (j != swapString[i].lenght)
-        {
+        while (j != swapString[i].lenght){
             printf("%c",swapString[i].ptr[j]);
             j++;
-            /* code */
         }
         printf(" ");
-        /* code */
     }
     printf("\n");
     free(array);
     free(swapString);
-    
-
 }
 
 int main (){
