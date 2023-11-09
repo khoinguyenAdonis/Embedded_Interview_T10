@@ -15,21 +15,17 @@ int binarySearch(int array[],int id, int left, int right){
         }
     }
 }
+
 int main(){
     int array[10000];
     for(int i=0; i<10000; i++){
         array[i] = array[i-1] + rand() % 100 ;
     }
-    for (int i = 0; i < 10000; i++)
-    {
-        printf("%d ", array[i]);
-    }
     printf("\n");
     int id = 8170;
     int left = 0;
-    int right =  sizeof(array)/sizeof(array[0]) ;
-    printf("%d\n",right);
+    int right =  sizeof(array)/sizeof(array[0])-1;
     int result = binarySearch(array,id, left,right);
-    printf("ID :\t%d\nResult:\t%s",id,(result > 0)? "Valid":"Not Valid");
+    printf("ID:\t%d\nResult:\t%s",id,(result > 0)? "Valid":"Not Valid");
     return 0;
 }
