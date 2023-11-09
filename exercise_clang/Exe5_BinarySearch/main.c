@@ -21,7 +21,6 @@ int main(){
     for(int i=0; i<10000; i++){
         array[i] = array[i-1] + rand() % 100 ;
     }
-    printf("\n");
     int id = 8170;
     int left = 0;
     int right =  sizeof(array)/sizeof(array[0])-1;
