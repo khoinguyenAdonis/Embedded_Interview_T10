@@ -1,5 +1,5 @@
 <details> 
-    <summary><h1>▶ C programming language <h2></summary>
+    <summary><h1>⭐ C programming language <h2></summary>
 
 <details> 
     <summary><h2>struct and union </h3></summary>
