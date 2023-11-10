@@ -2,7 +2,7 @@
     <summary><h1>▶ C programming language <h2></summary>
 
 <details> 
-    <summary><h2>▶struct and union <h3></summary>
+    <summary><h2>▶struct and union </h3></summary>
 
 ### struct
 Struct định nghĩa một kiểu dữ liệu mới, với hơn một thành phần trong chương trình, biến dạng struct bao gồm nhiều thành phần có thể thuộc nhiều kiểu dữ liệu khác nhau. Typedef Struct  khai báo/ định nghĩa một kiểu struct
@@ -35,7 +35,7 @@ Do đó kích thước của union là kích thước lớn nhất của kiểu 
 
 </details>
 <details>
-    <summary><h2>▶Phân vùng bộ nhớ ram <h3></summary>
+    <summary><h2>▶Phân vùng bộ nhớ ram </h3></summary>
 
 |Stack|
 |:-|
