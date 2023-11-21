@@ -1,66 +1,37 @@
 #include <stdio.h>
-#include <stdlib.h>
-typedef struct {
-    char* ptr;
-    int lenght;
-}words;
-int nuberWords(char string[]){
-    int count = 1;
-    while (*string != '\0'){
-        if (*string == ' '){
-            count++;
-            string++;
-            continue;
-        }
-        string++;
-        /* code */
-    }
-    return count;
-    
-}
-words *splitsWords(char string[], int size){
-    words* array= (words*)malloc(sizeof(words)*size);
-    int count = 0;
-    int index = 0;
-    array[index].ptr = string;
-    while(*string != '\0'){
-        if (*string == ' '){
-            array[index].lenght = count;
-            count = 0;
-            index ++;
-            string ++;
-            array[index].ptr = string;
-            continue;
-            /* code */
-        }
-        count++;
-        string++;
-    }
-    array[index].lenght = count;
-    return array;
-}
 
-void display(char string[]){
-    int size = nuberWords(string);
-    words* array = splitsWords(string,size);
-    words* swapString = (words*)malloc(sizeof(words)*size);
-    for (int i =0 ; i< size; i++){
-        swapString[i] = array[size - 1 -i];      
-    }
-    for (int i = 0; i < size; i++){
-        int j = 0;
-        while (j != swapString[i].lenght){
-            printf("%c",swapString[i].ptr[j]);
-            j++;
+void converdWord(char string[], int size){
+    char tmp[size];
+    int first = 0;
+    int last = size - 2;
+    int idx = 0;
+    for (int i = size; i >= 0; i--)
+    {
+        if (string[i] == ' '){
+            first = i + 1;
+            for (int j = first; j <= last; j++){
+                tmp[idx++] = string[j];
+            }
+            tmp[idx++] = ' ';
+            last = first - 2;
         }
-        printf(" ");
     }
-    printf("\n");
-    free(array);
-    free(swapString);
+    for (int j = 0; j <= last; j++){
+        tmp[idx] = string[j];
+        idx++;
+    }
+    char *p = tmp;
+    for (int i = 0 ; i < size; i++){
+      *string = *p;
+      string++;
+      p++;
+    }
 }
 
 int main (){
     char string[] = "​A Wales where large grazing animals roam freely in natural herds, creating complex and dynamic habitat full of life.";
-    display(string);             
+    int size = sizeof(string)/sizeof(char);
+    converdWord(string,size); 
+    printf("%s\n",string);
+    return 0;            
 }
