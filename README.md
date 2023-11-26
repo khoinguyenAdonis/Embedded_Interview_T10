@@ -489,3 +489,129 @@ lúc định nghĩa class và định nghĩa thi hành bên ngoài class.
 			std::cout<<"model"<<model<<std::endl;
 		}
 ```
+### Constructor
+Constructor hay hàm dựng là một hàm đặc biệt, nó sẽ được gọi ngay khi chúng ta
+khởi tạo một object.
+```c++
+class Person {
+	public:
+	string firstName;
+	string lastName;
+	int age;
+	Person(string _firstName, string _lastName, int _age){
+		firstName = _firstName;
+		lastName = _lastName;
+		age = _age;
+	}
+	void fullname() {
+		cout << firstName << ' ' << lastName;
+	}
+};
+```
+### Static member
+Static member hay thành viên tĩnh trong class C++ cũng tương tự như với static
+variable (biến tĩnh) trong function. Đối với function, sau khi thực hiện xong khối
+lệnh và thoát thì biến tĩnh vẫn sẽ không mất đi. Đối với class, thành viên tĩnh sẽ là
+thuộc tính dùng chung cho tất cả các đối tượng của class đó, cho dù là không có đối
+tượng nào tồn tại. Tức là bạn có thể khai báo nhiều object, mỗi object các thuộc tính
+của nó đều khác nhau nhưng riêng static thì chỉ có một và static member tồn tại trong
+suốt chương trình cho dù có hay không có object nào của nó hay nói ngắn gọn là
+dùng chung một biến static.
+	Note : 
+	Khi định nghĩa static trong class thì phải khởi tạo lần đầu ở ngoài.
+	Khi khởi tạo thì địa chỉ của nó tồn tại trong suốt chương trình nên member static này của các object sẽ đều có cùng 1 địa chỉ.
+### Đặt tính của hướng đối tượng 
+Có 4 đặc tính quan trọng của lập trình hướng đối tượng trong C++ mà chúng ta cần
+nắm vững sau đây.
+- Inheritance (Tính kế thừa ) trong lập trình hướng đối tượng có ý nghĩa, một class
+có thể kế thừa các thuộc tính của một class khác đã tồn tại trước đó.
+Khi một class con được tạo ra bởi việc kế thừa thuộc tính của class cha thì chúng ta
+sẽ gọi class con đó là subclass trong C++, và class cha chính là superclass trong
+C++.
+```c++
+ class DoiTuong{
+ 	public:
+ 		void setThongTin(string ten, int tuoi);
+ 		void hienThi();
+ 	protected:
+ 		int TUOI; //property
+ 		string TEN;
+ };
+ 
+ void DoiTuong::hienThi(){
+ 	cout<<"Day la class DoiTuong"<<endl;
+ 	cout<<"Ten: "<<TEN<<endl;  
+ 	cout<<"Tuoi "<<TUOI<<endl;
+ }
+ 
+ void DoiTuong::setThongTin(string ten,int tuoi){
+ 	TEN = ten;
+ 	TUOI = tuoi;
+ }
+ class SinhVien : public DoiTuong{
+ 	public:
+ 		void setThongTin(string ten, int tuoi, int mssv);
+ 		void hienThi(); //method	
+ 	private:
+ 		int MSSV;
+ };
+ 
+ void SinhVien::setThongTin(string ten, int tuoi, int mssv){
+ 	TEN = ten;
+ 	TUOI = tuoi;
+ 	MSSV = mssv;
+ }
+ 
+ void SinhVien::hienThi(){
+ 	cout<<"Day la class DoiTuong"<<endl;
+ 	cout<<"Ten: "<<TEN<<endl;  
+ 	cout<<"Tuoi "<<TUOI<<endl;
+ 	cout<<"Mssv "<<MSSV<<endl;
+ }
+ 
+ int main(){
+ 	SinhVien dt;
+ 	dt.setThongTin("Hoang", 17);
+ 	dt.hienThi();
+ 	
+ 	SinhVien sv;
+ 	sv.setThongTin("Toan", 15,100);
+ 	sv.hienThi();
+ 	
+ 	return 0;
+ }
+```
+- Abstraction (Tính trừu tượng) trong lập trình hướng đối tượng là một khả năng
+mà chương trình có thể bỏ qua sự phức tạp bằng cách tập trung vào cốt lõi của thông
+tin cần xử lý.
+Điều đó có nghĩa, bạn có thể xử lý một đối tượng bằng cách gọi tên một phương
+thức và thu về kết quả xử lý, mà không cần biết làm cách nào đối tượng đó được các
+thao tác trong class.
+Ví dụ đơn giản, bạn có thể nấu cơm bằng nồi cơm điện bằng cách rất đơn giản là ấn
+công tắc nấu, mà không cần biết là bên trong cái nồi cơm điện đó đã làm thế nào mà
+gạo có thể nấu thành cơm.
+
+- Polymorphism (Tính đa hình) trong lập trình hướng đối tượng là một khả năng mà
+một phương thức trong class có thể đưa ra các kết quả hoàn toàn khác nhau, tùy
+thuộc vào dữ liệu được xử lý.
+Ví dụ đơn giản, cùng là một class quản lý dữ liệu là các con vật, thì hành động sủa
+hay kêu của chúng được định nghĩa trong class sẽ cho ra kết quả khác nhau, ví dụ
+nếu là con mèo thì kêu meo meo, còn con chó thì sủa gâu gâu chẳng hạn.
+```c++
+ class th{
+ 	public:
+ 		void tong(int a, int b);
+ 		void tong(int a, double b);
+ 		void tong(int a, int b, int c);
+ };
+```
+- Encapsulation (Tính đóng gói) trong lập trình hướng đối tượng có ý nghĩa không
+cho phép người sử dụng các đối tượng thay đổi trạng thái nội tại của một đối tượng,
+mà chỉ có phương thức nội tại của đối tượng có thể thay đổi chính nó.
+Điều đó có nghĩa, dữ liệu và thông tin sẽ được đóng gói lại, giúp các tác động bên
+ngoài một đối tượng không thể làm thay đổi đối tượng đó, nên sẽ đảm bảo tính toàn
+vẹn của đối tượng, cũng như giúp dấu đi các dữ liệu thông tin cần được che giấu.
+Ví dụ đơn giản, khi bạn dùng một cái iphone, bạn không thể thay đổi các cấu trúc
+bên trong của hệ điều hành iOS, mà chỉ có Apple mới có thể làm được điều này thôi.
+</details>
+	<summary><h3>Namespace</h3></summary>
