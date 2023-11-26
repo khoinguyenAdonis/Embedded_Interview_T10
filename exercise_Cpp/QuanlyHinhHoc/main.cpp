@@ -2,51 +2,49 @@
 
 class Shape {
     public:
-    float area;
-    float perimeter;
-    virtual void calculateArea();
-    virtual void calculatePerimeter();
+    virtual float calculateArea();
+    virtual float calculatePerimeter();
     void display();
 };
 
-void Shape::calculateArea(){
-    area = 0;
+float Shape::calculateArea(){
+    return 0;
 }
-void Shape::calculatePerimeter(){
-    perimeter = 0;
+float Shape::calculatePerimeter(){
+    return 0;
 }
 void Shape::display(){
-    std::cout<<"Chu vi la: "<<area<<std::endl;
-    std::cout<<"Dien tich la: "<<perimeter<<std::endl;
+    std::cout<<"Chu vi la: "<<calculateArea()<<std::endl;
+    std::cout<<"Dien tich la: "<<calculatePerimeter()<<std::endl;
 }
 
 class Circle : public Shape{
     public:
     float radius;
-    void calculateArea();
-    void calculatePerimeter();
+    float calculateArea();
+    float calculatePerimeter();
 };
 
-void Circle :: calculateArea (){
-    area = 2*3.14*radius;
+float Circle :: calculateArea (){
+    return 2*3.14*radius;
 }
-void Circle :: calculatePerimeter(){
-    perimeter = 3.14*radius*radius;
+float Circle :: calculatePerimeter(){
+    return 3.14*radius*radius;
 }
 class Rectangle :public Shape{
     public:
     float length;
     float width;
-    void calculateArea();
-    void calculatePerimeter();
+    float calculateArea();
+    float calculatePerimeter();
 };
 
-void Rectangle :: calculateArea(){
-    area = (length+width)*2;
+float Rectangle :: calculateArea(){
+    return (length+width)*2;
 }
 
-void Rectangle :: calculatePerimeter(){
-    perimeter = length*width;
+float Rectangle :: calculatePerimeter(){
+    return length*width;
 }
 
 int main (){
