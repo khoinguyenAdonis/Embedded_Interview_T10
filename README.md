@@ -616,3 +616,41 @@ bên trong của hệ điều hành iOS, mà chỉ có Apple mới có thể là
 </details>
 <details>
 	<summary><h3>Namespace</h3></summary>
+
+### Namespace là gì?
+Namespace là từ khóa trong C++ được sử dụng để định nghĩa một phạm vi nhằm mục đích phân biệt các hàm, lớp, biến, ... cùng tên trong các thư viện khác nhau.
+Trong các project lớn, sẽ có các hàm, lớp, ... cùng tên được định nghĩa, nhưng nội dụng khác nhau . Trong những trường hợp này cần đặt các hàm, lớp, ... này vào các amespace khác nhau để trình biên dịch có thể phân biệt được, cũng như việc tường minh code cho những người cần đọc và sử dụng sau đó.
+Vd :
+```c++
+ namespace A{
+ 	int a;
+ 	void function(){...}
+ 	struct c{...};
+ };
+ namespace B{
+ 	int a;
+ 	void function(){...}
+ 	struct c{...};
+ }
+```
+</details>
+<details>
+	<summary><h3>Template</h3></summary>
+
+### Template là gì?
+- Template (khuôn mẫu) là một từ khóa trong C++, và là một kiểu dữ liệu trừu tượng tổng quát hóa cho các kiểu dữ liệu int, float, double, bool...
+- Template trong C++ có 2 loại đó là function template & class template.
+- Template giúp người lập trình định nghĩa tổng quát cho hàm và lớp thay vì phải nạp chồng (overloading) cho từng hàm hay phương thức với những kiểu dữ liệu khác nhau.
+vd :
+```c++
+ int tong(int a, int b);
+ double tong(double a, double b);
+ template<typename var> //thay vì ta code hai hàm riêng để xử lý, thì ta có thể code dùng template chung lại để gọn code hơn.
+ int tong(var a, var b){// Nếu  a và b khác kiểu dữ liệu thì var của hai phải khác nhau. ví dụ var a, var1 b  
+ 						//Lúc này var đại diện cho kiểu dữ liệu a và var1 đại diện cho kiểu dữ liệu b.
+	return (var)(a+b);
+ }
+```
+</details>
+<details>
+	<summary><h3>List&Vector</h3></summary>
