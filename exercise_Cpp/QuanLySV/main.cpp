@@ -1,15 +1,12 @@
 #include <iostream>
 
 class SinhVien{
-    public:
+    private:
     std::string name;
     int age;
-    int diem;
-    SinhVien(std::string Name, int Age, int Diem){
-        name = Name;
-        age = Age;
-        diem = Diem;
-    }
+    int diem;   
+    public:
+    SinhVien(std::string sName, int iAge, int iDiem) : name(sName), age(iAge), diem(iDiem) {}
     void displayInfo();
 };
 

@@ -19,8 +19,10 @@ void Shape::display(){
 }
 
 class Circle : public Shape{
-    public:
+    private:
     float radius;
+    public:
+    Circle(float fRadius) : radius(fRadius) {}
     float calculateArea();
     float calculatePerimeter();
 };
@@ -32,9 +34,11 @@ float Circle :: calculatePerimeter(){
     return 3.14*radius*radius;
 }
 class Rectangle :public Shape{
-    public:
+    private:
     float length;
     float width;
+    public:
+    Rectangle(float fLength, float fWidth) : length(fLength), width(fWidth) {}
     float calculateArea();
     float calculatePerimeter();
 };
@@ -48,14 +52,11 @@ float Rectangle :: calculatePerimeter(){
 }
 
 int main (){
-    Circle c;
-    c.radius = 5;
+    Circle c(5);
     c.calculateArea();
     c.calculatePerimeter();
     c.display();
-    Rectangle r;
-    r.length = 2;
-    r.width = 3;
+    Rectangle r(2,5);
     r.calculateArea();
     r.calculatePerimeter();
     r.display();

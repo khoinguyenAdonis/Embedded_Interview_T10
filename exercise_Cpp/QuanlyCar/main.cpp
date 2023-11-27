@@ -9,17 +9,17 @@ class Car{
         int fuelCapacity;
     public:
         Car(int Speed, string Color, int Fuel) : speed(Speed), color(Color), fuelCapacity(Fuel){}
-        void accelerate();
-        void brake();
+        void accelerate(int iSpeed);
+        void brake(int iSpeed);
         void displayInfo();
 };
 
-void Car::accelerate(){
-    speed += 5;
+void Car::accelerate(int iSpeed){
+    speed += iSpeed;
 }
 
-void Car::brake(){
-    if (speed >= 5) speed -=5;
+void Car::brake(int iSpeed){
+    if (speed >= iSpeed) speed -= iSpeed;
     else speed = 0;
 }
 void Car::displayInfo(){
@@ -30,6 +30,7 @@ void Car::displayInfo(){
 
 int main (){
     Car toyota (250,"xanh",300);
+    toyota.brake(50);
     toyota.displayInfo();
     return 0 ;
 }
