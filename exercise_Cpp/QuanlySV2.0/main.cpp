@@ -1,7 +1,6 @@
 #include <iostream>
 #include <vector>
 #include <string>
-#include <stdlib.h>
 using namespace std;
 
 bool sortName(string arr1, string arr2){
@@ -30,15 +29,20 @@ class Student{
     float mediumScore ;
     string classify;
     public : 
-    Student(string sName = "", int iAge = 0, int iId = 0, float fMath = 0, float fPhysics = 0, float fChemistry = 0 ): name(sName),age(iAge),id(iId),math(fMath),physics(fPhysics),chemistry(fChemistry){}
+    Student(string sName = "", int iAge = 0, float fMath = 0, float fPhysics = 0, float fChemistry = 0 ): name(sName),age(iAge),math(fMath),physics(fPhysics),chemistry(fChemistry){
+        static int Id = 0;
+        Id ++;
+        id = Id;
+    }
     void caculateScore();
     void classification();
     void displayIfo();
-    void edit(string sName, int iAge, int iId, float fMath, float fPhysics, float fChemistry);
+    void edit(string sName, int iAge,  float fMath, float fPhysics, float fChemistry);
     int Id();
     string Name(){
         return name;
     }
+    float getMediumScore();
 };
 
 void Student::caculateScore(){
@@ -63,13 +67,15 @@ void Student::displayIfo(){
 int Student:: Id(){
         return id;
     }
-void Student::edit(string sName, int iAge, int iId, float fMath, float fPhysics, float fChemistry){
+void Student::edit(string sName, int iAge, float fMath, float fPhysics, float fChemistry){
     name = sName;
     age = iAge;
-    id = iId;
     math = fMath;
     physics = fPhysics;
     chemistry = fChemistry;
+}
+float Student::getMediumScore(){
+    return mediumScore;
 }
 class StudentManagement {
     private:
@@ -79,14 +85,13 @@ class StudentManagement {
         void removeStudent();
         void editStudent();
         void arrangeName();
-        void arrangeID();
+        void arrangeScore();
         void display();
 };
 
 void StudentManagement::addStudent(){
     string name;
     int age;
-    int id;
     float math;
     float physics;
     float chemistry;
@@ -95,16 +100,28 @@ void StudentManagement::addStudent(){
     fflush(stdin);
     cout<<"Tuoi : "; cin>>age;
     fflush(stdin);
-    cout<<"Id   : "; cin>>id;
-    fflush(stdin);
-    cout<<"Toan : "; cin>>math;
-    fflush(stdin);
-    cout<<"Ly   : "; cin>>physics;
-    fflush(stdin);
-    cout<<"Hoa  : "; cin>>chemistry;
+    do
+    {
+        cout << "Toan : ";
+        cin >> math;
+        
+    } while (math > 10 || math < 0);
+    do
+    {
+        fflush(stdin);
+        cout << "Ly   : ";
+        cin >> physics;
+        
+    } while (physics > 10 || physics < 0);
+    do
+    {
+        fflush(stdin);
+        cout << "Hoa  : ";
+        cin >> chemistry;
+        
+    } while (chemistry > 10 || chemistry < 0);
     cin.ignore();
-
-    Student student(name,age,id,math,physics,chemistry);
+    Student student(name,age,math,physics,chemistry);
     student.caculateScore();
     student.classification();
     array.push_back(student);
@@ -145,7 +162,6 @@ void StudentManagement::editStudent(){
     int count = 0;
     string name;
     int age;
-    int Id;
     float math;
     float physics;
     float chemistry;
@@ -160,15 +176,26 @@ void StudentManagement::editStudent(){
             fflush(stdin);
             cout<<"Tuoi : "; cin>>age;
             fflush(stdin);
-            cout<<"Id   : "; cin>>Id;
-            fflush(stdin);
-            cout<<"Toan : "; cin>>math;
-            fflush(stdin);
-            cout<<"Ly   : "; cin>>physics;
-            fflush(stdin);
-            cout<<"Hoa  : "; cin>>chemistry;
-            cin.ignore();
-            array[i].edit(name,age,Id,math,physics,chemistry);
+            do
+            {
+                cout << "Toan : ";
+                cin >> math;
+                fflush(stdin);
+            } while (math > 10 || math < 0);
+            do
+            {
+                cout << "Ly   : ";
+                cin >> physics;
+                fflush(stdin);
+            } while (physics > 10 || physics < 0);
+            do
+            {
+                cout << "Hoa  : ";
+                cin >> chemistry;
+                cin.ignore();
+            } while (chemistry > 10 || chemistry < 0);
+
+            array[i].edit(name,age,math,physics,chemistry);
             array[i].caculateScore();
             array[i].classification();
             cout<<"Da thay doi thong tin sinh vien"<<endl;
@@ -193,12 +220,12 @@ void StudentManagement::arrangeName(){
     }
 }
 
-void StudentManagement::arrangeID(){   
+void StudentManagement::arrangeScore(){   
     vector<Student> temp;
     for (int i = 0; i < array.size(); i++){
         int j = i+1;
         for (j; j< array.size(); j++){
-            if(array[i].Id() > array[j].Id()){
+            if(array[i].getMediumScore() > array[j].getMediumScore()){
                 temp.push_back(array[i]);
                 array[i] = array[j];
                 array[j] = temp[0];
@@ -296,7 +323,7 @@ void graphic(){
                 cout<<"----------------SAP_XEP_SINH_VIEN------------------"<<endl;
                 cout<<"| *CHON CHUC NANG CHUONG TRINH:                   |"<<endl;
                 cout<<"|>1. SAP XEP THEO TEN                             |"<<endl;
-                cout<<"|>2. SAP XEP THEO ID                              |"<<endl;
+                cout<<"|>2. SAP XEP THEO DIEM TRUNG BINH                 |"<<endl;
                 cout<<"|>3. EXIT                                         |"<<endl;
                 cout<<"|                                                 |"<<endl;
                 cout<<"|                                                 |"<<endl;
@@ -320,7 +347,7 @@ void graphic(){
                 else if (option == 2 ){
                     system("clear");
                     cout<<"----------------SAP XEP THEO ID----------------"<<endl;
-                    a.arrangeID();
+                    a.arrangeScore();
                     cout<<"          --------------------------"<<endl; 
                     cout<<"          | DA SAP XEP THANH CONG! |"<<endl;
                     cout<<"          --------------------------"<<endl;
